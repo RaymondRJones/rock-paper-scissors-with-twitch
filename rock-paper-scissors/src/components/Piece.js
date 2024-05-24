@@ -1,14 +1,22 @@
 import React from 'react';
 
-export default function Piece({type,velocity=2,direction=1}) {
-  var type_to_image_url = {
+export default function Piece({ type, position }) {
+  const typeToImageUrl = {
     "rock": "/rock.jpg",
     "paper": "/paper.jpg",
     "scissors": "/scissors.jpg",
-  }
-  let pieceImg = type_to_image_url[type]
+  };
+  
+  const pieceImg = typeToImageUrl[type];
+  const style = {
+    position: 'absolute',
+    left: `${position.x}px`,
+    top: `${position.y}px`,
+    width: '100px',
+    height: '100px',
+  };
+
   return (
-    <img src={pieceImg} alt=""/> 
+    <img src={pieceImg} alt={type} style={style} />
   );
 }
-
